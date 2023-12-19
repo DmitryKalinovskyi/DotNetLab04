@@ -1,0 +1,129 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="MessageBox" TargetType="TextBox">
+        <Setter Property="Background" Value="AliceBlue"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="TextBox">
+                    <Border CornerRadius="8"
+                            Background="#2c2b39"
+                            Margin="0 8 8 8">
+                        <Grid>
+                            <TextBox VerticalAlignment="Stretch"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Stretch"
+                                     Name="MessageBox"
+                                     Background="Transparent"
+                                     TextWrapping="Wrap"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     FontSize="16"
+                                     CaretBrush="Gray"
+                                     Margin="8 0 0 0"
+                                     Text="{Binding Message, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Command="{Binding SendCommand}" Key="Return"/>
+                                </TextBox.InputBindings>
+                                
+                            </TextBox>
+
+                            <TextBlock IsHitTestVisible="False"
+                                       Text="Enter message..."
+                                       VerticalAlignment="Center"
+                                       Margin="10 0 0 0"
+                                       FontSize="16"
+                                       Foreground="DarkGray"
+                                       >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=MessageBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+    
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            
+            </Setter.Value>
+        </Setter>
+    </Style>
+         
+    <Style x:Key="UsernameBox" TargetType="TextBox">
+        <Setter Property="Background" Value="AliceBlue"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="TextBox">
+                    <Border CornerRadius="8"
+                            Background="#2c2b39"
+                            Margin="0 8">
+                        <Grid>
+                            <TextBox VerticalAlignment="Stretch"
+                                     Name="MessageBox"
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Stretch"
+                                     Background="Transparent"
+                                     TextWrapping="Wrap"
+                                     BorderThickness="0"
+                                     Foreground="White"
+                                     FontSize="16"
+                                     CaretBrush="Gray"
+                                     Margin="8 0 0 0"
+                                     Text="{Binding Text, ElementName=username_TextBox}">
+
+                            </TextBox>
+
+                            <TextBlock IsHitTestVisible="False"
+                                       Text="Enter username..."
+                                       VerticalAlignment="Center"
+                                       Margin="10 0 0 0"
+                                       FontSize="16"
+                                       Foreground="DarkGray"
+                                       >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=MessageBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DefaultButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="8"
+                            Padding="8 4"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding Content}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ChatLibrary.DataContracts.Common" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ChatLibrary.DataContracts.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5000/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:5000/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:5000/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ChatLibrary.DataContracts.ServerModels" />
+  <xs:complexType name="ClientModel">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Conversations" nillable="true" type="q1:ArrayOfguid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientModel" nillable="true" type="tns:ClientModel" />
+  <xs:complexType name="ConnectContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContractID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConnectContract" nillable="true" type="tns:ConnectContract" />
+  <xs:complexType name="ChatModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsGroup" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Members" nillable="true" type="q2:ArrayOfint" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ChatLibrary.DataContracts.ServerModels" minOccurs="0" name="Messages" nillable="true" type="q3:ArrayOfServerMessageModel" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChatModel" nillable="true" type="tns:ChatModel" />
+  <xs:complexType name="ArrayOfClientModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientModel" nillable="true" type="tns:ClientModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClientModel" nillable="true" type="tns:ArrayOfClientModel" />
+</xs:schema>
