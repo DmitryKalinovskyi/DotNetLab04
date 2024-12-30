@@ -12,7 +12,6 @@ namespace ChatClient.Commands
         private Action<object> execute; //execution logic
         private Func<object, bool> canExecute; //detects whether command can be executed
 
-
         public event EventHandler CanExecuteChanged //is called when conditions for whether command can be executed or not change
         {
             add { CommandManager.RequerySuggested += value; }
